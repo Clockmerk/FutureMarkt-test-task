@@ -1,0 +1,15 @@
+@use '../../assets/styles' as *;
+
+header {
+  @include flex(center, center, row, 10rem);
+  @include size(1320px, 40.46px);
+  margin-top: 40px;
+}
+
+ul {
+  @include flex(center, center, row, 2.3rem);
+}
+
+p {
+  text-decoration: underline overline;
+}

@@ -1,0 +1,78 @@
+@use './styles/' as *;
+
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  src:
+    local('Raleway'),
+    url('./styles/fonts/Raleway/Raleway-VariableFont_wght.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  src:
+    local('Montserrat'),
+    url('./styles/fonts/Montserrat/Montserrat-VariableFont_wght.ttf') format('truetype');
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+:root {
+  @each $name, $color in $colors {
+    --color-#{$name}: #{$color};
+  }
+}
+
+body {
+  background-color: color('main-bg');
+  color: color('text');
+}
+
+#app {
+  min-height: 100%;
+  @include flex($align: center, $direction: column);
+}
+
+main {
+  @include position(absolute, 256px, false, false, 300px);
+}
+
+a {
+  @include font(14px, 41px, 400, 'm');
+  text-decoration: none;
+  color: color('text');
+}
+
+h1 {
+  @include font(65px, 35px, 600, 'r');
+}
+
+h2 {
+  @include font(55px, 35px, 600, 'r');
+}
+
+p {
+  @include font(14px, 41px, 400, 'm');
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: color('text');
+}
+
+.modal {
+  @include position(absolute, 50vh, false, false, 0);
+}

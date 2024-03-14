@@ -1,0 +1,11 @@
+@use 'sass:map';
+
+$colors: (
+  'placeholder': rgba(0, 0, 0, 0.48),
+  'main-bg': #0c2846,
+  'form-bg': #07305d,
+  'border': rgba(0, 0, 0, 0.16),
+  'text': white,
+  'success': #05ae71,
+  'error': #e84e58
+);

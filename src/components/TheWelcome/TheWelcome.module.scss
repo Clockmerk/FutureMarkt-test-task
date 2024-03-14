@@ -1,0 +1,23 @@
+@use '../../assets/styles' as *;
+
+.info {
+  @include size(800px);
+}
+
+.items {
+  @include flex(center, center, row, 15rem);
+}
+
+.btn-primary {
+  @include size(381px, 71px);
+  @include border(2px, solid, white);
+  @include font(18px, 35px, 600, 'r');
+  background-color: white;
+  color: color('form-bg');
+}
+
+.btn-secondary {
+  @include size(381px, 71px);
+  @include border(2px, solid, white);
+  @include font(18px, 35px, 600, 'r');
+}
