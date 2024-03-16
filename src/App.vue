@@ -4,6 +4,12 @@ import TheHeader from './layouts/TheHeader/TheHeader.vue'
 </script>
 
 <template>
+  <div class="lines">
+    <span></span>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
   <TheHeader />
   <RouterView />
 </template>

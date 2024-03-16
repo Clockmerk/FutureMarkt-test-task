@@ -1,15 +1,22 @@
 @use '../../assets/styles' as *;
 
 header {
-  @include flex(center, center, row, 10rem);
-  @include size(1320px, 40.46px);
+  @include flex(space-around, center, row, 10rem);
   margin-top: 40px;
 }
 
 ul {
-  @include flex(center, center, row, 2.3rem);
+  @include flex(center, center, row, 2rem);
 }
 
-p {
-  text-decoration: underline overline;
+.logo {
+  @include size(false, 34px);
+  @include flex(center, center, column);
+  border-top: solid 1px color('text');
+  border-bottom: solid 1px color('text');
+}
+
+.tel {
+  @include flex(center, center, row, 1rem);
+  @include font(18px, 35px, 600, 'm');
 }

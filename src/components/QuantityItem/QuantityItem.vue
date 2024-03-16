@@ -10,7 +10,10 @@ const quantity = ref((day + month + year).split('').reduce((a, b) => ~~a + ~~b, 
 
 <template>
   <div>
-    <p>{{ quantity }}</p>
-    <p>техник для достижения целей</p>
+    <p>{{ quantity }}+</p>
+    <p>
+      техник для <br />
+      достижения целей
+    </p>
   </div>
 </template>

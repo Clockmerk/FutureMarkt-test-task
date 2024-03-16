@@ -1,23 +1,83 @@
 @use '../../assets/styles' as *;
 
+.welcome-text {
+  @include flex($direction: column, $gap: 4rem);
+}
+
 .info {
+  @include flex(false, false, column, 3rem);
   @include size(800px);
 }
 
-.items {
-  @include flex(center, center, row, 15rem);
+.title {
+  h1 {
+    @include font(65px, 87.94px, 600, 'r');
+  }
+}
+
+.subtitle {
+  border-left: 1px solid white;
+  padding-left: 25px;
+  p {
+    @include font(16px, 24px, 400, 'r');
+    opacity: 0.5;
+  }
+}
+
+.buttons {
+  @include flex(false, center, row, 2.3rem);
+}
+
+button {
+  @include size(381px, 71px);
+  @include font(18px, 35px, 600, 'r');
+  @include flex(false, center, row, 0rem);
+  padding-left: 25px;
+  span {
+    @include size(81%);
+    text-align: start;
+  }
 }
 
 .btn-primary {
-  @include size(381px, 71px);
-  @include border(2px, solid, white);
-  @include font(18px, 35px, 600, 'r');
   background-color: white;
   color: color('form-bg');
 }
 
 .btn-secondary {
-  @include size(381px, 71px);
-  @include border(2px, solid, white);
-  @include font(18px, 35px, 600, 'r');
+  @include border(1px, solid, white);
+}
+
+.arrow {
+  @include size(4rem, 100%);
+  border-left: 2px solid #0b3461;
+}
+
+.arrow-white {
+  @include size(4rem, 100%);
+  border-left: 2px solid white;
+}
+
+object {
+  @include position(relative, false, $r: -12px, $b: -32px);
+}
+
+.items {
+  @include flex(false, false, row, 15.5rem);
+
+  > * {
+    padding-left: 25px;
+    border-left: 1px solid white;
+    @include flex(center, false, column, 1.5rem);
+  }
+
+  :nth-child(n) {
+    :nth-child(1) {
+      @include font(40px, 41px, 600, 'm');
+    }
+    :nth-child(2) {
+      @include font(16px, 24px, 400, 'r');
+      opacity: 0.5;
+    }
+  }
 }

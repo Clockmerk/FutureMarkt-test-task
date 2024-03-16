@@ -35,17 +35,23 @@ body {
 }
 
 body {
-  background-color: color('main-bg');
+  @include flex($align: center, $direction: column);
   color: color('text');
+  background-color: rgb(19, 52, 87);
+  background-image: url('./images/background.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  backdrop-filter: blur(8.7px);
 }
 
 #app {
-  min-height: 100%;
-  @include flex($align: center, $direction: column);
+  @include flex($direction: column, $gap: 10rem);
 }
 
 main {
-  @include position(absolute, 256px, false, false, 300px);
+  @include flex($direction: row, $gap: 5rem);
+  @include size(100%, 50%);
 }
 
 a {
@@ -62,8 +68,30 @@ h2 {
   @include font(55px, 35px, 600, 'r');
 }
 
-p {
-  @include font(14px, 41px, 400, 'm');
+input[type='text'] {
+  @include font(20px, 41px, 400, 'm');
+  border: none;
+  background-color: transparent;
+  border-bottom: 1px solid #ffffffcc;
+}
+
+input[type='checkbox'] {
+  appearance: none;
+  -webkit-appearance: none;
+  @include size(30px, 30px);
+  cursor: pointer;
+  border: 1px solid #ffffff;
+
+  &:checked {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 60%;
+  }
+}
+
+input::placeholder {
+  color: #ffffffcc;
 }
 
 button {
@@ -74,5 +102,27 @@ button {
 }
 
 .modal {
-  @include position(absolute, 50vh, false, false, 0);
+  @include position(absolute, 0, false, false, 0);
+  @include size(100%, 100%);
+  @include flex(false, false);
+}
+
+.lines {
+  @include size(false, 100vh);
+  @include flex(false, false, row, 31.9%);
+  border-left: 1px solid rgba(255, 255, 255, 0.8);
+  border-right: 1px solid rgba(255, 255, 255, 0.8);
+  margin-bottom: -116.5vh;
+  z-index: -1;
+  > :nth-child(2) {
+    border: none;
+  }
+  > div {
+    border-right: 1px solid rgba(255, 255, 255, 0.8);
+  }
+  > span {
+    @include position(absolute, 0, 0, 0, 0, 0);
+    @include size(100vw, 100vh);
+    background: #133457de;
+  }
 }
