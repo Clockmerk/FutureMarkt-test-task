@@ -1,7 +1,7 @@
 @use '../../assets/styles' as *;
 
 .welcome-text {
-  @include flex($direction: column, $gap: 4rem);
+  @include flex($direction: column, $gap: 7rem);
 }
 
 .info {
@@ -58,8 +58,11 @@ button {
   border-left: 2px solid white;
 }
 
-object {
-  @include position(relative, false, $r: -12px, $b: -32px);
+.arrow,
+.arrow-white {
+  img {
+    @include position(relative, false, $r: -12px, $b: -32px);
+  }
 }
 
 .items {
@@ -78,6 +81,20 @@ object {
     :nth-child(2) {
       @include font(16px, 24px, 400, 'r');
       opacity: 0.5;
+    }
+  }
+}
+
+.mentor {
+  @include position(absolute, false, $r: 10vw, $b: 0px);
+  z-index: -1;
+}
+
+@media screen and (max-width: 1600px) {
+  .mentor {
+    @include position(absolute, false, $r: 0vw, $b: 0px);
+    img {
+      @include size(85%);
     }
   }
 }

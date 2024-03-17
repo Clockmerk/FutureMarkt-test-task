@@ -27,7 +27,8 @@ export const useUserDataStore = defineStore('userData', () => {
   function clearData() {
     userData.name = ''
     userData.phone = ''
+    userData.check = false
   }
 
-  return { userData, getData, submitData, clearData }
+  return { getData, submitData, clearData }
 })

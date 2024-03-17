@@ -46,12 +46,16 @@ body {
 }
 
 #app {
-  @include flex($direction: column, $gap: 10rem);
+  @include flex($direction: column, $gap: 12rem);
+  height: 100%;
 }
 
+header {
+  z-index: 2;
+}
 main {
-  @include flex($direction: row, $gap: 5rem);
-  @include size(100%, 50%);
+  //@include flex($direction: row, $gap: 5rem);
+  z-index: 1;
 }
 
 a {
@@ -68,7 +72,23 @@ h2 {
   @include font(55px, 35px, 600, 'r');
 }
 
+.error {
+  @include flex($align: center, $direction: column);
+  @include font(18px, false, 400, 'm');
+  color: color('error');
+  text-align: center;
+}
+
 input[type='text'] {
+  @include font(20px, 41px, 400, 'm');
+  color: color('text');
+  border: none;
+  background-color: transparent;
+  border-bottom: 1px solid #ffffffcc;
+}
+
+input[type='tel'] {
+  color: color('text');
   @include font(20px, 41px, 400, 'm');
   border: none;
   background-color: transparent;
@@ -105,24 +125,32 @@ button {
   @include position(absolute, 0, false, false, 0);
   @include size(100%, 100%);
   @include flex(false, false);
+  background: #0f1d459f;
+  backdrop-filter: blur(10px);
+  z-index: 3;
 }
 
 .lines {
-  @include size(false, 100vh);
-  @include flex(false, false, row, 31.9%);
+  @include size(false, 130vh);
+  @include flex(space-evenly, false, row, 5.5%);
   border-left: 1px solid rgba(255, 255, 255, 0.8);
   border-right: 1px solid rgba(255, 255, 255, 0.8);
-  margin-bottom: -116.5vh;
-  z-index: -1;
-  > :nth-child(2) {
-    border: none;
-  }
+  margin-top: -115vh;
+  z-index: -2;
   > div {
-    border-right: 1px solid rgba(255, 255, 255, 0.8);
+    border-left: 1px solid rgba(255, 255, 255, 0.8);
   }
-  > span {
-    @include position(absolute, 0, 0, 0, 0, 0);
-    @include size(100vw, 100vh);
-    background: #133457de;
+}
+
+.bg {
+  @include position(absolute, 0, 0, 0, 0, 0);
+  @include size(100vw, 100vh);
+  background: #133457de;
+  z-index: -1;
+}
+
+@media screen and (max-width: 1600px) {
+  #app {
+    @include flex($gap: 4rem);
   }
 }

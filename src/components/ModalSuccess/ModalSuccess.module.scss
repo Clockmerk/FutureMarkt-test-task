@@ -1,0 +1,31 @@
+@use '../../assets/styles' as *;
+
+:nth-child(2) {
+  @include font(50px, 78.9px, 600, 'r');
+  text-align: center;
+}
+
+:nth-child(3) {
+  @include font(40px, 58px, 600, 'r');
+  text-align: center;
+}
+
+.logo {
+  @include size(100%);
+  @include flex(end, center, row);
+
+  padding-right: 50px;
+
+  div {
+    @include size(false, 34px);
+    @include flex(center, center, row);
+    border-top: solid 1px color('text');
+    border-bottom: solid 1px color('text');
+  }
+}
+
+@media screen and (max-width: 1600px) {
+  .logo {
+    margin-top: 0%;
+  }
+}

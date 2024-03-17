@@ -1,9 +1,9 @@
 <script setup lang="ts">
+import { ref, watch } from 'vue'
+import arrowWhite from '@/assets/svg/arrow-white.svg'
 import { useUserDataStore } from '@/stores/userdata'
 import { storeToRefs } from 'pinia'
-import { watch } from 'vue'
-
-defineEmits(['close'])
+import { schema } from '@/lib/yup'
 
 const store = useUserDataStore()
 const { getData } = storeToRefs(store)
@@ -18,40 +18,58 @@ watch(
 )
 
 const sumbitForm = () => {
-  submitData(getData.value)
-  clearData()
+  try {
+    schema.validateSync(getData.value)
+    submitData({ name: getData.value.name, phone: getData.value.phone })
+    clearData()
+  } catch (error) {
+    errorMessage.value = (error as Error).message
+  }
 }
+
+const errorMessage = ref('')
 </script>
 
 <template>
-  <div class="modal-body">
-    <div class="close">
-      <button @click="$emit('close')">X</button>
+  <h2>
+    Закажите <br />
+    обратный звонок
+  </h2>
+  <template v-if="errorMessage">
+    <div class="error">
+      <p>{{ errorMessage }}</p>
     </div>
-    <h2>
-      Закажите <br />
-      обратный звонок
-    </h2>
-    <div>
-      <form class="form" @submit.prevent="sumbitForm">
-        <div>
-          <input type="text" v-model="getData.name" placeholder="ИМЯ" />
-          <input type="text" v-model="getData.phone" placeholder="ТЕЛЕФОН" />
+  </template>
+  <div>
+    <form class="form" @submit.prevent="sumbitForm" novalidate>
+      <div class="inputs">
+        <input type="text" name="name" v-model="getData.name" placeholder="ИМЯ" autocomplete="on" />
+        <input
+          type="tel"
+          name="phone"
+          v-model="getData.phone"
+          v-mask="'+7##########'"
+          placeholder="ТЕЛЕФОН"
+          autocomplete="on"
+        />
+      </div>
+      <div class="checkbox">
+        <input type="checkbox" v-model="getData.check" id="check" />
+        <label for="check"
+          >Согласен на сохранение и обработку <br />
+          персональных данных
+        </label>
+      </div>
+      <button class="btn">
+        <span>Заказать обратный звонок</span>
+        <div class="arrow-white">
+          <object :data="arrowWhite" type="image/svg+xml"></object>
         </div>
-        <div>
-          <input type="checkbox" v-model="getData.check" id="check" />
-          <label for="check"
-            >Согласен на сохранение и обработку <br />
-            персональных данных
-          </label>
-        </div>
-        <button type="submit">Заказать обратный звонок</button>
-      </form>
-    </div>
+      </button>
+    </form>
   </div>
-  <div class="modal-bg"></div>
 </template>
 
 <style scoped>
-@import 'ModalForm.module.scss';
+@import './ModalForm.module.scss';
 </style>

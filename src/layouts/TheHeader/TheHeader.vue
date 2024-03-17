@@ -22,7 +22,7 @@ const links = new Map([
       </ul>
     </nav>
     <a href="tel:+73451233445" class="tel">
-      <img src="@/assets/svg/tel.svg" alt="tel" />
+      <div class="tel-img"><img src="@/assets/svg/tel.svg" alt="tel" /></div>
       <span> 8-345-123-34-45</span>
     </a>
   </header>

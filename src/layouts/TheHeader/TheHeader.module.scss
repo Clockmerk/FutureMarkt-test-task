@@ -1,12 +1,12 @@
 @use '../../assets/styles' as *;
 
 header {
-  @include flex(space-around, center, row, 10rem);
+  @include flex(space-around, center, row, 12rem);
   margin-top: 40px;
 }
 
 ul {
-  @include flex(center, center, row, 2rem);
+  @include flex(center, center, row, 1.5rem);
 }
 
 .logo {
@@ -19,4 +19,16 @@ ul {
 .tel {
   @include flex(center, center, row, 1rem);
   @include font(18px, 35px, 600, 'm');
+}
+
+.tel-img {
+  @include flex(center, center, column);
+  width: 40.46px;
+  height: 40.46px;
+  border: 1px solid white;
+  border-radius: 50%;
+  cursor: pointer;
+  &:hover {
+    background: rgba(255, 255, 255, 0.123);
+  }
 }

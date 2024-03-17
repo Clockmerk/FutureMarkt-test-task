@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import PercentItem from '../PercentItem/PercentItem.vue'
 import QuantityItem from '../QuantityItem/QuantityItem.vue'
-import ModalForm from '../ModalForm/ModalForm.vue'
+import ModalItem from '../ModalItem/ModalItem.vue'
 import arrow from '@/assets/svg/arrow.svg'
 import arrowWhite from '@/assets/svg/arrow-white.svg'
 import mentor from '@/assets/images/mentor.png'
@@ -29,12 +29,12 @@ const modalForm = ref(false)
       <div class="buttons">
         <button @click="modalForm = true" class="btn-primary">
           <span>Записаться на консультацию</span>
-          <div class="arrow"><object :data="arrow" type="image/svg+xml"></object></div>
+          <div class="arrow"><img :src="arrow" alt="arrow" /></div>
         </button>
-        <button class="btn-secondary">
+        <button @click="modalForm = true" class="btn-secondary">
           <span>Бесплатная консультация</span>
           <div class="arrow-white">
-            <object :data="arrowWhite" type="image/svg+xml"></object>
+            <img :src="arrowWhite" alt="arrow" />
           </div>
         </button>
       </div>
@@ -45,9 +45,13 @@ const modalForm = ref(false)
     </div>
   </div>
 
+  <div class="mentor">
+    <img :src="mentor" alt="mentor" />
+  </div>
+
   <Teleport to="body">
     <div v-if="modalForm" class="modal">
-      <ModalForm @close="modalForm = false" />
+      <ModalItem @close="modalForm = false" />
     </div>
   </Teleport>
 </template>

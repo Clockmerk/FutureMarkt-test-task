@@ -1,0 +1,33 @@
+@use '../../assets/styles' as *;
+
+.modal-body {
+  @include flex(start, center, column, 5rem);
+  padding-top: 40px;
+  padding-left: 75px;
+  padding-right: 30px;
+  width: 36%;
+  background: #0f1d45;
+  > * {
+    @include size(100%);
+  }
+}
+
+.modal-bg {
+  width: 78%;
+}
+
+.close {
+  @include flex(end, center, row);
+}
+
+@media screen and (max-width: 1600px) {
+  .modal-body {
+    @include flex($gap: 0rem);
+  }
+}
+
+@media screen and (max-width: 1440px) {
+  .modal-body {
+    @include flex($gap: 1rem);
+  }
+}

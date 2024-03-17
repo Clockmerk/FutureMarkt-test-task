@@ -1,28 +1,47 @@
 @use '../../assets/styles' as *;
 
 .form {
-  @include flex(center, center, column, 1rem);
-}
+  @include flex(center, false, column, 6rem);
+  width: 100%;
 
-.close {
-  @include flex(end, center, row);
-}
+  .inputs {
+    @include flex(center, false, column, 3rem);
+    padding-right: 15px;
+    width: 100%;
+  }
 
-.modal-body {
-  padding-top: 40px;
-  padding-left: 75px;
-  padding-right: 25px;
-  width: 36%;
-  @include flex(start, center, column, 5rem);
-  background: #0f1d45;
-}
+  .checkbox {
+    @include flex(false, center, row, 1rem);
+  }
 
-.modal-bg {
-  width: 78%;
-  background: #0f1d4599;
-  z-index: 2;
+  label {
+    @include font(16px, 21px, 400, 'm');
+    text-align: left;
+  }
 }
 
 h2 {
+  padding-left: 15px;
   line-height: 72px;
+}
+
+.btn {
+  @include size(381px, 71px);
+  @include font(18px, 35px, 600, 'r');
+  @include flex(false, center, row, 0rem);
+  @include border(1px, solid, white);
+  padding-left: 25px;
+  span {
+    @include size(81%);
+    text-align: start;
+  }
+}
+
+.arrow-white {
+  @include size(4rem, 100%);
+  border-left: 2px solid white;
+}
+
+object {
+  @include position(relative, false, $r: -12px, $b: -32px);
 }
