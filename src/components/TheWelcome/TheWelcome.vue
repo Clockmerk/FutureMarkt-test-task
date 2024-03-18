@@ -16,23 +16,36 @@ const modalForm = ref(false)
       <div class="title">
         <h1>
           СОЗДАЮ УСЛОВИЯ <br />
-          ДЛЯ ВАШЕГО УСПЕХА
+          ДЛЯ ВАШЕГО <br class="line-break-title" />
+          УСПЕХА
         </h1>
       </div>
       <div class="subtitle">
-        <p>
+        <p class="main-p">
           Когда ваше время и энергия лучше сфокусированы, стремление к новым <br />возможностям
-          становится реальностью, ваш успех зависит от ваших действий
+          становится реальностью, ваш успех зависит <br class="line-break" />
+          от ваших действий
+        </p>
+        <p class="second-p">
+          Ваш успех зависит от ваших <br />
+          действий
         </p>
       </div>
 
       <div class="buttons">
         <button @click="modalForm = true" class="btn-primary">
-          <span>Записаться на консультацию</span>
+          <div class="btn-text">
+            <span class="span-main">Записаться на консультацию</span>
+            <span class="span-second">Записаться</span>
+          </div>
+
           <div class="arrow"><img :src="arrow" alt="arrow" /></div>
         </button>
         <button @click="modalForm = true" class="btn-secondary">
-          <span>Бесплатная консультация</span>
+          <div class="btn-text">
+            <span class="span-main">Бесплатная консультация</span>
+            <span class="span-second">Заказать звонок</span>
+          </div>
           <div class="arrow-white">
             <img :src="arrowWhite" alt="arrow" />
           </div>
@@ -50,9 +63,11 @@ const modalForm = ref(false)
   </div>
 
   <Teleport to="body">
-    <div v-if="modalForm" class="modal">
-      <ModalItem @close="modalForm = false" />
-    </div>
+    <Transition name="modal-form">
+      <div v-if="modalForm" class="modal">
+        <ModalItem @close="modalForm = false" />
+      </div>
+    </Transition>
   </Teleport>
 </template>
 

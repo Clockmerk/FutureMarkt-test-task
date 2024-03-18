@@ -37,14 +37,8 @@ const $emit = defineEmits(['close'])
         <img :src="cross" alt="cross" />
       </button>
     </div>
-
-    <template v-if="!getData.submitedName">
-      <ModalForm />
-    </template>
-
-    <template v-if="getData.submitedName">
-      <ModalSuccess />
-    </template>
+    <ModalForm v-if="!getData.submitedName" />
+    <ModalSuccess v-if="getData.submitedName" />
   </div>
   <div class="modal-bg" @click="$emit('close')"></div>
 </template>

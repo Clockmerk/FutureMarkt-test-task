@@ -26,6 +26,7 @@ html,
 body {
   width: 100%;
   height: 100%;
+  overflow: hidden;
 }
 
 :root {
@@ -153,4 +154,34 @@ button {
   #app {
     @include flex($gap: 4rem);
   }
+}
+@media screen and (max-width: 426px) {
+  #app {
+    @include size(90%);
+  }
+  .lines {
+    @include size(false, 200vh);
+    margin-top: -150vh;
+  }
+}
+
+// Свойства Vue-Transition для модалок
+.modal-enter-active,
+.modal-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.modal-enter-from,
+.modal-leave-to {
+  opacity: 0;
+}
+
+.modal-form-enter-active,
+.modal-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.modal-form-enter-from,
+.modal-leave-to {
+  opacity: 0;
 }

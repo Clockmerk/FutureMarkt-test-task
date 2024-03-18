@@ -1,7 +1,7 @@
 @use '../../assets/styles' as *;
 
 header {
-  @include flex(space-around, center, row, 12rem);
+  @include flex(false, center, row, 12rem);
   margin-top: 40px;
 }
 
@@ -16,6 +16,13 @@ ul {
   border-bottom: solid 1px color('text');
 }
 
+.right-side {
+  @include flex(center, center, row, 1rem);
+  button:hover {
+    background: rgba(255, 255, 255, 0.123);
+  }
+}
+
 .tel {
   @include flex(center, center, row, 1rem);
   @include font(18px, 35px, 600, 'm');
@@ -23,12 +30,50 @@ ul {
 
 .tel-img {
   @include flex(center, center, column);
-  width: 40.46px;
-  height: 40.46px;
-  border: 1px solid white;
-  border-radius: 50%;
+  @include size(40.46px, 40.46px);
+  @include border(1px, solid, white, 50%);
   cursor: pointer;
   &:hover {
     background: rgba(255, 255, 255, 0.123);
+  }
+}
+
+button {
+  @include flex(center, center, column);
+  @include size(40.46px, 40.46px);
+  @include border(1px, solid, white, 50%);
+  display: none;
+}
+
+@media screen and (max-width: 1439px) {
+  header {
+    @include flex(space-between);
+  }
+  button {
+    @include flex(center, center, column);
+  }
+  nav {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .tel {
+    span {
+      display: none;
+    }
+  }
+}
+
+@media screen and (max-width: 426px) {
+  header {
+    @include flex($gap: 0);
+    margin-top: 20px;
+  }
+  .logo {
+    @include size($h: 22px);
+    object {
+      @include size($h: 50%);
+    }
   }
 }

@@ -13,7 +13,7 @@
 .logo {
   @include size(100%);
   @include flex(end, center, row);
-
+  margin-top: 28%;
   padding-right: 50px;
 
   div {
@@ -25,7 +25,42 @@
 }
 
 @media screen and (max-width: 1600px) {
+  :nth-child(3) {
+    margin-top: 20%;
+  }
   .logo {
-    margin-top: 0%;
+    margin-top: 35%;
+  }
+}
+
+@media screen and (max-width: 1600px) {
+  .logo {
+    margin-top: 45%;
+  }
+}
+
+@media screen and (max-width: 426px) {
+  :nth-child(2) {
+    margin-top: 10%;
+    @include font(30px, 30px);
+  }
+
+  :nth-child(3) {
+    margin-top: 25%;
+    @include font(25px, 30px);
+  }
+
+  .logo {
+    margin-top: 40%;
+    margin-left: 10%;
+  }
+}
+
+@media screen and (max-width: 376px) {
+  :nth-child(3) {
+    margin-top: 30%;
+  }
+  .logo {
+    margin-top: 55%;
   }
 }

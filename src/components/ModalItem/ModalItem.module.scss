@@ -1,19 +1,15 @@
 @use '../../assets/styles' as *;
 
 .modal-body {
-  @include flex(start, center, column, 5rem);
+  @include flex(false, false, column, 5rem);
   padding-top: 40px;
   padding-left: 75px;
   padding-right: 30px;
-  width: 36%;
+  width: 31%;
   background: #0f1d45;
   > * {
     @include size(100%);
   }
-}
-
-.modal-bg {
-  width: 78%;
 }
 
 .close {
@@ -22,12 +18,51 @@
 
 @media screen and (max-width: 1600px) {
   .modal-body {
-    @include flex($gap: 0rem);
+    @include flex($gap: 1rem);
+    padding-left: 20px;
   }
 }
 
 @media screen and (max-width: 1440px) {
   .modal-body {
-    @include flex($gap: 1rem);
+    @include size(35%);
+  }
+}
+
+@media screen and (max-width: 1025px) {
+  .modal-body {
+    @include size(50%);
+  }
+}
+
+@media screen and (max-width: 769px) {
+  .modal-body {
+    @include size(63%);
+  }
+}
+
+@media screen and (max-width: 426px) {
+  .modal-body {
+    @include size(100%);
+    padding-top: 35px;
+    padding-left: 50px;
+    padding-right: 40px;
+  }
+
+  .close {
+    button {
+      img {
+        @include size(19px, 20px);
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 321px) {
+  .modal-body {
+    @include size(100%);
+    padding-top: 35px;
+    padding-left: 35px;
+    padding-right: 10px;
   }
 }

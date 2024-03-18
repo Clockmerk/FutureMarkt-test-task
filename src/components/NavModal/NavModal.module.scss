@@ -1,0 +1,35 @@
+@use '../../assets/styles' as *;
+
+.nav-modal {
+  @include position(absolute, 0, 0);
+  @include size(100%, 100%);
+  @include flex(start, center, column);
+  background: #0f1d45;
+  z-index: 3;
+  padding: 15px;
+}
+
+.close {
+  @include size(100%);
+  @include flex(start, center, row);
+  margin-bottom: 100px;
+  img {
+    @include size(24px, 24px);
+  }
+}
+
+ul {
+  @include size(50%, 60%);
+  @include flex(center, center, column);
+  gap: 1rem;
+}
+
+@media screen and (min-width: 768px) {
+  .nav-modal {
+    @include size(35%);
+  }
+}
+
+.nav-modal {
+  transition: all 0.3s ease-in-out;
+}

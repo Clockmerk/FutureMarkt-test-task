@@ -7,7 +7,7 @@
   .inputs {
     @include flex(center, false, column, 3rem);
     padding-right: 15px;
-    width: 100%;
+    width: 98%;
   }
 
   .checkbox {
@@ -21,12 +21,12 @@
 }
 
 h2 {
+  @include font(50px, 74px, 600, 'r');
   padding-left: 15px;
-  line-height: 72px;
 }
 
 .btn {
-  @include size(381px, 71px);
+  @include size(72%, 71px);
   @include font(18px, 35px, 600, 'r');
   @include flex(false, center, row, 0rem);
   @include border(1px, solid, white);
@@ -42,6 +42,132 @@ h2 {
   border-left: 2px solid white;
 }
 
-object {
+img {
   @include position(relative, false, $r: -12px, $b: -32px);
+}
+
+@media screen and (max-width: 1600px) {
+  .form {
+    @include flex($gap: 5rem);
+  }
+  .btn {
+    @include size(92%, 71px);
+  }
+  h2 {
+    @include font(40px, 50px);
+    margin-bottom: 3rem;
+  }
+}
+
+@media screen and (max-width: 1440px) {
+  .form {
+    @include flex($gap: 4rem);
+  }
+  h2 {
+    @include font(38px);
+  }
+}
+
+@media screen and (max-width: 426px) {
+  .form {
+    label {
+      @include size(80%);
+      @include font(12px, 15px);
+    }
+  }
+  h2 {
+    @include font(25px, 29.76px);
+    padding-left: 5px;
+  }
+
+  input {
+    @include font(12px, 15px);
+  }
+
+  .error {
+    @include font(13px);
+    margin-top: -30px;
+  }
+
+  .btn {
+    @include size(90%, 50px);
+    @include font(14px, 17.19px);
+    @include flex(false, center, row, 0rem);
+    @include border(1px, solid, white);
+    padding-left: 10px;
+
+    span {
+      text-align: center;
+    }
+  }
+
+  .arrow-white {
+    @include size(2.5rem, 100%);
+    border-left: 2px solid white;
+  }
+
+  img {
+    @include size(13.21px);
+    @include position(relative, false, $r: -17px, $b: -25px);
+  }
+
+  input[type='checkbox'] {
+    @include size(15px, 15px);
+  }
+}
+
+@media screen and (max-width: 376px) {
+  img {
+    @include position(relative, false, $r: -10px, $b: -25px);
+  }
+}
+
+@media screen and (max-width: 321px) {
+  .form {
+    label {
+      @include size(80%);
+      @include font(12px, 15px);
+    }
+
+    label {
+      margin-top: -2rem;
+    }
+    input[type='checkbox'] {
+      margin-top: -3.8rem;
+    }
+  }
+  h2 {
+    @include font(20px, 29.76px);
+    padding-left: 5px;
+  }
+
+  input {
+    @include font(12px, 15px);
+  }
+
+  .error {
+    @include font(13px);
+    margin-top: -50px;
+  }
+
+  .btn {
+    @include size(90%, 50px);
+    @include font(14px, 17.19px);
+    @include flex(false, center, row, 0rem);
+    @include border(1px, solid, white);
+    padding-left: 10px;
+  }
+
+  .arrow-white {
+    @include size(2.5rem, 100%);
+    border-left: 2px solid white;
+  }
+
+  img {
+    @include position(relative, false, $r: -8px, $b: -25px);
+  }
+
+  input[type='checkbox'] {
+    @include size(15px, 15px);
+  }
 }

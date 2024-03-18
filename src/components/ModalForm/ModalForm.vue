@@ -1,9 +1,13 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue'
-import arrowWhite from '@/assets/svg/arrow-white.svg'
 import { useUserDataStore } from '@/stores/userdata'
 import { storeToRefs } from 'pinia'
 import { schema } from '@/lib/yup'
+
+/*watch и store задублирован, т.к. при прокидывание из родителя
+v-model не срабатывает на изменение данных.
+TODO: исправить данную реализацию для сокращения кода
+*/
 
 const store = useUserDataStore()
 const { getData } = storeToRefs(store)
@@ -63,7 +67,7 @@ const errorMessage = ref('')
       <button class="btn">
         <span>Заказать обратный звонок</span>
         <div class="arrow-white">
-          <object :data="arrowWhite" type="image/svg+xml"></object>
+          <img src="@/assets/svg/arrow-white.svg" alt="arrow" />
         </div>
       </button>
     </form>

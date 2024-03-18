@@ -12,9 +12,10 @@ const { data } = useQuery({
   <div>
     <p v-if="!data">100+%</p>
     <p v-if="data">{{ Math.round(data.Valute.GBP.Value) }}%</p>
-    <p>
+    <p class="main-p">
       увеличение личной <br />
       продуктивности
     </p>
+    <p class="second-p">продуктивности</p>
   </div>
 </template>

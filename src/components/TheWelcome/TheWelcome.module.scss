@@ -12,56 +12,101 @@
 .title {
   h1 {
     @include font(65px, 87.94px, 600, 'r');
+    .line-break-title {
+      display: none;
+    }
   }
 }
 
 .subtitle {
   border-left: 1px solid white;
   padding-left: 25px;
-  p {
+  .main-p,
+  .second-p {
     @include font(16px, 24px, 400, 'r');
     opacity: 0.5;
+  }
+  .second-p {
+    display: none;
+  }
+  .line-break {
+    display: none;
   }
 }
 
 .buttons {
   @include flex(false, center, row, 2.3rem);
+  .span-second {
+    display: none;
+  }
 }
 
 button {
   @include size(381px, 71px);
   @include font(18px, 35px, 600, 'r');
   @include flex(false, center, row, 0rem);
-  padding-left: 25px;
+
   span {
     @include size(81%);
     text-align: start;
   }
 }
 
+/*FIXME: Исправить hover, используя изменение цвета
+svg. Данный hover выглядит не очень.
+*/
 .btn-primary {
-  background-color: white;
   color: color('form-bg');
+
+  .btn-text {
+    background: white;
+    @include flex(start, center, row);
+    :nth-child(1) {
+      @include size(100%);
+      margin-left: 25px;
+    }
+    @include size(80%, 100%);
+    &:hover {
+      border-top: 1px solid white;
+      border-left: 1px solid white;
+      border-bottom: 1px solid white;
+      background: none;
+      color: white;
+    }
+  }
 }
 
 .btn-secondary {
   @include border(1px, solid, white);
+  .btn-text {
+    @include flex(start, center, row);
+    :nth-child(1) {
+      @include size(100%);
+      margin-left: 25px;
+    }
+    @include size(80%, 100%);
+    &:hover {
+      background: white;
+      color: color('form-bg');
+    }
+  }
 }
 
 .arrow {
-  @include size(4rem, 100%);
+  @include size(20%, 100%);
+  background: white;
   border-left: 2px solid #0b3461;
 }
 
 .arrow-white {
-  @include size(4rem, 100%);
+  @include size(20%, 100%);
   border-left: 2px solid white;
 }
 
 .arrow,
 .arrow-white {
   img {
-    @include position(relative, false, $r: -12px, $b: -32px);
+    @include position(relative, $r: -12px, $b: -32px);
   }
 }
 
@@ -78,23 +123,266 @@ button {
     :nth-child(1) {
       @include font(40px, 41px, 600, 'm');
     }
-    :nth-child(2) {
+
+    :nth-child(2),
+    :nth-child(3) {
       @include font(16px, 24px, 400, 'r');
       opacity: 0.5;
+    }
+    :nth-child(3) {
+      display: none;
     }
   }
 }
 
 .mentor {
-  @include position(absolute, false, $r: 10vw, $b: 0px);
+  @include position(absolute, $r: 10vw, $b: 0px);
+  @include flex(center, center, column);
   z-index: -1;
 }
 
 @media screen and (max-width: 1600px) {
+  .welcome-text {
+    @include flex($gap: 5rem);
+  }
   .mentor {
-    @include position(absolute, false, $r: 0vw, $b: 0px);
+    @include position(absolute, $r: 0vw, $b: 0px);
     img {
-      @include size(85%);
+      @include size(88%);
     }
+  }
+}
+
+@media (max-height: 1024px) and (max-width: 1440px) {
+  .welcome-text {
+    @include flex($gap: 11rem);
+  }
+
+  .info {
+    @include flex($gap: 5rem);
+  }
+
+  .mentor {
+    img {
+      @include size(100%);
+    }
+  }
+}
+
+@media screen and (max-width: 1439px) {
+  .welcome-text {
+    @include flex($gap: 3rem);
+  }
+  .title {
+    h1 {
+      @include font(45px, 58px);
+    }
+  }
+
+  .subtitle {
+    p {
+      @include font(13.75px);
+    }
+  }
+
+  .buttons {
+    @include flex(false, start, column, 2.3rem);
+
+    button {
+      @include size(39.5%);
+      @include font(15.5px);
+    }
+  }
+
+  .items {
+    @include flex($gap: 5.1rem);
+  }
+
+  .mentor {
+    @include position(absolute, $r: -5rem, $b: 0);
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .info {
+    @include flex($gap: 2rem);
+    @include size(600px);
+  }
+  .mentor {
+    @include position(absolute, $r: -10rem, $b: 0);
+  }
+
+  .items {
+    @include flex($gap: 1.15rem);
+  }
+
+  .arrow,
+  .arrow-white {
+    img {
+      @include position(relative, $r: -8px, $b: -35px);
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .welcome-text {
+    @include flex($gap: 8rem);
+  }
+
+  .subtitle {
+    @include size(80%);
+  }
+
+  .info {
+    @include flex($gap: 5rem);
+  }
+  .buttons {
+    .span-second {
+      display: flex;
+    }
+    .span-main {
+      display: none;
+    }
+    button {
+      @include size(41.1%, 60px);
+      @include font(15.5px);
+    }
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    .btn-text {
+      @include flex(center, center, row);
+    }
+  }
+  .arrow,
+  .arrow-white {
+    @include size(25%, 100%);
+    img {
+      @include position(relative, $r: -8px, $b: -28px);
+    }
+  }
+
+  .subtitle {
+    .line-break {
+      display: block;
+    }
+  }
+}
+
+@media screen and (max-width: 426px) {
+  .welcome-text {
+    @include flex($gap: 5.5rem);
+  }
+  .info {
+    @include flex($gap: 3rem);
+    @include size(100%);
+  }
+  .mentor {
+    @include position(fixed, $r: -13.5rem, $b: 0px);
+    img {
+      @include size(55%);
+    }
+  }
+  .title {
+    h1 {
+      @include font(25px, 34px);
+      .line-break-title {
+        display: block;
+      }
+    }
+  }
+  .subtitle {
+    padding-left: 10px;
+    .main-p {
+      display: none;
+    }
+
+    .second-p {
+      @include font(11px, 16.5px);
+      display: block;
+    }
+  }
+  .buttons {
+    @include flex($gap: 1rem);
+    button {
+      padding-left: 0px;
+      @include size(40.1%, 30.28px);
+      @include font(15.5px);
+    }
+    .span-second {
+      @include font(10px, 12.28px);
+    }
+  }
+
+  .arrow,
+  .arrow-white {
+    @include size(22%);
+    img {
+      @include size(0.6rem);
+      @include position(relative, $r: -4px, $b: -2px);
+    }
+  }
+
+  .items {
+    @include flex($gap: 4.5rem);
+
+    > * {
+      padding-left: 15px;
+      @include flex(center, false, column, 0.5rem);
+    }
+
+    :nth-child(n) {
+      :nth-child(1) {
+        @include font(16px, 26.61px);
+      }
+      :nth-child(2) {
+        display: none;
+      }
+      :nth-child(3) {
+        display: block;
+        @include font(10px, 12.28px);
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 376px) {
+  .items {
+    @include flex($gap: 3.6rem);
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .btn-secondary {
+    .btn-text {
+      span {
+        padding-left: 4px;
+        width: 99%;
+      }
+    }
+  }
+
+  .btn-primary {
+    .btn-text {
+      span {
+        padding-left: 9px;
+      }
+    }
+  }
+
+  .buttons {
+    button {
+      @include size(41.1%, 30.28px);
+    }
+  }
+
+  .arrow,
+  .arrow-white {
+    @include size(25%);
+  }
+
+  .items {
+    @include flex($gap: 2.6rem);
   }
 }
